@@ -69,6 +69,7 @@ class nginx (
   $worker_connections             = undef,
   $worker_processes               = undef,
   $worker_rlimit_nofile           = undef,
+  $worker_shutdown_timeout        = undef,
   ### END Nginx Configuration
 
   ### START Module/App Configuration ###
@@ -197,6 +198,7 @@ class nginx (
         $worker_connections or
         $worker_processes or
         $worker_rlimit_nofile or
+        $worker_shutdown_timeout or
         $global_owner or
         $global_group or
         $global_mode or
@@ -278,6 +280,7 @@ class nginx (
       worker_connections             => $worker_connections,
       worker_processes               => $worker_processes,
       worker_rlimit_nofile           => $worker_rlimit_nofile,
+      worker_shutdown_timeout        => $worker_shutdown_timeout,
       global_owner                   => $global_owner,
       global_group                   => $global_group,
       global_mode                    => $global_mode,

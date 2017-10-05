@@ -102,6 +102,7 @@ class nginx::config(
   $worker_connections             = '1024',
   $worker_processes               = '1',
   $worker_rlimit_nofile           = '1024',
+  $worker_shutdown_timeout        = '10s',
   ### END Nginx Configuration ###
 ) inherits ::nginx::params {
 
@@ -118,6 +119,7 @@ class nginx::config(
   if (!is_string($events_use)) and ($events_use != false) {
     fail('$events_use must be a string or false.')
   }
+  validate_string($worker_shutdown_timeout)
   validate_string($multi_accept)
   validate_array($proxy_set_header)
   if ($proxy_http_version != undef) {
