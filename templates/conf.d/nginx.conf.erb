@@ -5,6 +5,9 @@ worker_processes <%= @worker_processes %>;
 <% if @worker_rlimit_nofile -%>
 worker_rlimit_nofile <%= @worker_rlimit_nofile %>;
 <% end -%>
+<% if @worker_shutdown_timeout -%>
+worker_shutdown_timeout <%= @worker_shutdown_timeout %>;
+<% end -%>
 
 <% if @pid -%>
 pid        <%= @pid %>;
